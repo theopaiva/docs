@@ -1,55 +1,30 @@
-# Mintlify Starter Kit
+# Yellow Guide — Mintlify test build
 
-Use the starter kit to get your docs deployed and ready to customize.
+A faithful Mintlify reproduction of https://docs.yellow.pro/ for testing whether
+Mintlify renders the GitBook structure the same way.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## What's inside
+- `docs.json` — full navigation (2 tabs: Guide + API Reference, all 64 pages, matching Yellow's tree)
+- `index.mdx`, `getting-started/what-is-yellow.mdx`, `spot-trading/how-to-place-a-spot-trade.mdx`
+  — real content, showing the GitBook→Mintlify block conversions
+- Every other page — placeholder with correct title/description frontmatter
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+## GitBook → Mintlify conversions demonstrated
+| GitBook | Mintlify |
+|---|---|
+| `{% hint style="info" %}` | `<Info>` / `<Note>` / `<Warning>` |
+| `<table data-view="cards">` | `<CardGroup>` + `<Card>` |
+| `{% tabs %}` / `{% tab %}` | `<Tabs>` / `<Tab>` |
+| numbered card list | `<Steps>` / `<Step>` |
+| `SUMMARY.md` | `navigation` in `docs.json` |
+| `.md` + hint blocks | `.mdx` + components |
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+## How to test it
+1. Install the CLI: `npm i -g mint`
+2. From this folder: `mint dev` → opens http://localhost:3000
+3. To publish: push this folder to a GitHub repo and connect it in the Mintlify dashboard.
 
-## AI-assisted writing
-
-Set up your AI coding tool to work with Mintlify:
-
-```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
-```
-
-View your local preview at `http://localhost:3000`.
-
-## Publishing changes
-
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
-
-## Need help?
-
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+## Migrating for real
+Replace each placeholder body with the matching GitBook page. Every source page is
+available as Markdown by appending `.md` to its URL (e.g.
+https://docs.yellow.pro/fees/vip-tiers.md), which you can paste in and convert.
